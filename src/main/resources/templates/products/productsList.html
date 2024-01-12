@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- bootstrap@5.2.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- bootstrap@5.2.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <title>Product List Page</title>
+</head>
+<body>
+    <div class="container text-center mx-auto">
+        <div>
+            <div>
+                <h1 style="background : black, color : white">Spring 쇼핑몰</h1>
+                <h1>상품 목록</h1>
+
+                <p>
+                    <a href="/products/new">상품 생성</a>
+                    <a href="/products">상품 목록</a>
+                    <a href="/">메인 홈</a>
+                </p>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <td scope="col">이름</td>
+                    <td scope="col">가격</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}" scope="row" class="card-body mx-auto">
+                    <th th:text="${product.id}" class="card-subtitle mb-2 text-muted"></th>
+                    <td th:text="${product.name}" class="card-title"></td>
+                    <td th:text="${product.price}" class="card-text"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> <!-- container -->
+</body>
+</html>

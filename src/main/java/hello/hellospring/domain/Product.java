@@ -1,13 +1,9 @@
 package hello.hellospring.domain;
 
-public class Member {
-
+public class Product {
     private Long id;
     private String name;
-    private Cart cart;
-    public Member() {
-        cart = new Cart();
-    }
+    private Long price;
 
     public Long getId() {
         return id;
@@ -24,7 +20,12 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
-    public void addToCart(Product product) {
-        cart.addToCart(product);
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
     }
 }
