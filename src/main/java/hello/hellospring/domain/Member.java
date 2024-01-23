@@ -1,13 +1,13 @@
 package hello.hellospring.domain;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Member {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Cart cart;
-    public Member() {
-        cart = new Cart();
-    }
 
     public Long getId() {
         return id;
@@ -23,8 +23,5 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
-    }
-    public void addToCart(Product product) {
-        cart.addToCart(product);
     }
 }

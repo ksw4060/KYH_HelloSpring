@@ -35,7 +35,7 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String userList(Model model) {
+    public String productList(Model model) {
         List<Product> products = productService.findProducts();
         model.addAttribute("products", products);
         return "products/productsList";

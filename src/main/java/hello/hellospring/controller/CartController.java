@@ -13,19 +13,19 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    @GetMapping("/cart")
-    private String createForm() {
-        return "cart/createCartForm";
-    }
-
-    @PostMapping("/cart")
-    public String create(CartForm form) {
-        Cart cart = new Cart();
-        cart.setName(form.getName());
-        cart.setPrice(form.getPrice());
-
-        cartService.createProduct(product);
-
-        return "redirect:/";
-    }
+//    @GetMapping("/cart")
+//    private String createForm() {
+//        return "cart/createCartForm";
+//    }
+//
+//    @PostMapping("/cart")
+//    public String create(CartForm form) {
+//        Cart cart = new Cart();
+//        cart.setName(form.getName());
+//        cart.setPrice(form.getPrice());
+//
+//        cartService.createProduct(product);
+//
+//        return "redirect:/";
+//    }
 }

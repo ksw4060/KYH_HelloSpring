@@ -5,12 +5,14 @@ import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service 의존성 주입 문제로, IllegalStateException 가 나와서 지워봅니다.
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
@@ -23,11 +25,18 @@ public class MemberService {
      * 회원가입
      */
     public Long join(Member member) {
-        // 같은 이름이 있는 중복 회원이 있으면 안된다.
-        validateDuplicateMember(member);
+        long start = System.currentTimeMillis();
 
-        memberRepository.save(member);
-        return member.getId();
+        try {
+            // 같은 이름이 있는 중복 회원이 있으면 안된다.
+            validateDuplicateMember(member);
+            memberRepository.save(member);
+            return member.getId();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms");
+        }
     }
 
     /**
@@ -45,8 +54,16 @@ public class MemberService {
      * 전체 회원 조회
      */
     public List<Member> findMembers() {
+        long start = System.currentTimeMillis();
 
-        return memberRepository.findAll();
+        try {
+            return memberRepository.findAll();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("findMembers = " + timeMs + "ms");
+        }
+
     }
     /**
      * 회원 조회

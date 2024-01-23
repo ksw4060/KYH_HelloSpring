@@ -5,6 +5,7 @@ import hello.hellospring.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @SpringBootTest
-@Transactional
+@Transactional //db에 실제 데이터를 반영하지 않는다.
 class MemberServiceIntegrationTest {
 
     @Autowired MemberService memberService;
@@ -23,7 +24,7 @@ class MemberServiceIntegrationTest {
     void 회원가입() {
         //given 주어진 조건
         Member member = new Member();
-        member.setName("hello");
+        member.setName("spring3");
 
         //when 어떤 상황에서
         Long saveId = memberService.join(member);
@@ -46,11 +47,5 @@ class MemberServiceIntegrationTest {
 
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
     }
-    @Test
-    void findMembers() {
-    }
 
-    @Test
-    void findOne() {
-    }
 }

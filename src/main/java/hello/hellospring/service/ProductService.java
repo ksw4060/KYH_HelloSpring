@@ -1,8 +1,7 @@
 package hello.hellospring.service;
 
-import hello.hellospring.domain.Member;
 import hello.hellospring.domain.Product;
-import hello.hellospring.repository.ProductRepository;
+import hello.hellospring.repository.JpaProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +9,9 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    private final ProductRepository productRepository;
+    private final JpaProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(JpaProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
